@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const characterCont = document.getElementById('characterCont');
     const searchInput = document.getElementById('searchInput');
-
+    const statusFilter = document.getElementById('statusFilter');
+    const speciesFilter = document.getElementById('speciesFilter');
+    const genderFilter = document.getElementById('genderFilter');
+    const originFilter = document.getElementById('originFilter');
     let allCharacters = [];
 
     const fetchAllCharacters = async () => {
@@ -36,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p>Status: ${character.status}</p>
                     <p>Species: ${character.species}</p>
                     <p>Gender: ${character.gender}</p>
-                    <p>Type: ${character.type}</p>
+                    ${character.type ? `<p>Type: ${character.type}</p>` : ''}
                     <p>Origin: ${character.origin.name}</p>
                 </div>
             `;
@@ -46,23 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const filterCharacters = () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filteredCharacters = allCharacters.filter(character => {
-            const matchesName = character.name.toLowerCase().includes(searchTerm);
+            const searchTerm = searchInput.value.toLowerCase();
+            const statusTerm = statusFilter.value;
+            const speciesTerm = speciesFilter.value;
+            const genderTerm = genderFilter.value;
+            const originTerm = originFilter.value.toLowerCase();
 
-            return matchesName ;
-        });
+            const filteredCharacters = allCharacters.filter(character => {
+                const matchesName = character.name.toLowerCase().includes(searchTerm);
+                const matchesStatus = !statusTerm || character.status.toLowerCase() === statusTerm;
+                const matchesSpecies = !speciesTerm || character.species.toLowerCase() === speciesTerm;
+                const matchesGender = !genderTerm || character.gender.toLowerCase() === genderTerm;
+                const matchesOrigin = !originTerm || character.origin.name.toLowerCase().includes(originTerm);
+                return matchesName && matchesStatus && matchesSpecies && matchesGender && matchesOrigin;
+            });
 
-        renderCharacters(filteredCharacters);
-    };
+            renderCharacters(filteredCharacters);
+        };
 
-    const loadCharacters = async () => {
-        allCharacters = await fetchAllCharacters();
-        filterCharacters();
-    };
+        const loadCharacters = async () => {
+            allCharacters = await fetchAllCharacters();
+            filterCharacters();
+        };
 
-    searchInput.addEventListener('input', filterCharacters);
+        searchInput.addEventListener('input', filterCharacters);
+        statusFilter.addEventListener('change', filterCharacters);
+        speciesFilter.addEventListener('change', filterCharacters);
+        genderFilter.addEventListener('change', filterCharacters);
+        originFilter.addEventListener('change', filterCharacters);
 
-
-    loadCharacters();
-});
+        loadCharacters();
+    });

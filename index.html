@@ -10,7 +10,40 @@
     <header>
         <h1>Rick and Morty Characters API</h1>
         <input type="text" id="searchInput" class="search-bar" placeholder="Search by name...">
+        <select id="statusFilter" class="filter-bar">
+            <option value="">All Statuses</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
+        </select>
+        <select id="speciesFilter" class="filter-bar">
+            <option value="">All Species</option>
+            <option value="human">Human</option>
+            <option value="alien">Alien</option>
 
+        </select>
+        <select id="genderFilter" class="filter-bar">
+            <option value="">All Genders</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="genderless">Genderless</option>
+            <option value="unknown">Unknown</option>
+        </select>
+        <select id="originFilter" class="filter-bar">
+            <option value="">All Origins</option>
+            <option value="earth">Earth</option>
+            <option value="Signus 5 Expanse">Signus 5 Expanse</option>
+            <option value="Venzenulon 7">Venzenulon 7</option>
+            <option value="Purge Planet">Purge Planet</option>
+            <option value="Bepis 9">Bepis 9</option>
+            <option value="Nuptia 4">Nuptia 4</option>
+            <option value="Bird World">Bird World</option>
+            <option value="Anatomy Park">Anatomy Park</option>
+            <option value="Gromflom Prime">Gromflom Prime</option>
+            <option value="Giant's Town">Giant's Town</option>
+            <option value="Rick's Battery Microverse">Rick's Battery Microverse</option>
+            <option value="unknown">Unknown</option>
+        </select>
     </header>
     <div class="container" id="characterCont"></div>
 
