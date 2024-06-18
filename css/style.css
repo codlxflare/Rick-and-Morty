@@ -62,7 +62,7 @@ header {
 
 
 #backButton {
-    background-color: #4CAF50;
+    background-color: green;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -77,5 +77,31 @@ header {
         }
 
 #backButton:hover {
-        background-color: #45a049;
+        background-color: orange;
+}
+
+#paginationCont {
+    display: flex;
+    justify-content: center;
+}
+
+#paginationCont button {
+    background-color: AliceBlue;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
+#paginationCont button.active {
+    background-color: blue;
+    color: white;
+}
+
+
+#paginationCont .ellipsis {
+    padding: 10px 15px;
+    margin: 0 5px;
+    font-size: 16px;
 }
