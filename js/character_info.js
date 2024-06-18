@@ -14,4 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p>Origin: ${character.origin.name}</p>
         <p>Location: ${character.location.name}</p>
     `;
+    document.getElementById('backButton').addEventListener('click', () => {
+                history.back();
+            });
 });

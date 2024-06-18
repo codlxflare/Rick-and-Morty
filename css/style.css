@@ -7,6 +7,10 @@ body {
     align-items: center;
 }
 
+h1 {
+    font-size: 42px;
+}
+
 header {
     background-color: #000;
     color: white;
@@ -54,4 +58,24 @@ header {
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+}
+
+
+#backButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+        }
+
+#backButton:hover {
+        background-color: #45a049;
 }

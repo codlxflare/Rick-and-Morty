@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusFilter = document.getElementById('statusFilter');
     const speciesFilter = document.getElementById('speciesFilter');
     const genderFilter = document.getElementById('genderFilter');
-    const originFilter = document.getElementById('originFilter');
+    const locationFilter = document.getElementById('locationFilter');
     let allCharacters = [];
 
     const fetchAllCharacters = async () => {
@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${character.image}" alt="${character.name}">
                 <div class="character-content">
                     <h3>${character.name}</h3>
+                    <p>Species: ${character.species}</p>
                     <p>Status: ${character.status}</p>
-                    <p>Origin: ${character.origin.name}</p>
+                    <p>Location: ${character.location.name}</p>
                 </div>
             `;
             characterCard.onclick = () => {
@@ -52,15 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const statusTerm = statusFilter.value;
             const speciesTerm = speciesFilter.value;
             const genderTerm = genderFilter.value;
-            const originTerm = originFilter.value.toLowerCase();
+            const locationTerm = locationFilter.value.toLowerCase();
 
             const filteredCharacters = allCharacters.filter(character => {
                 const matchesName = character.name.toLowerCase().includes(searchTerm);
                 const matchesStatus = !statusTerm || character.status.toLowerCase() === statusTerm;
                 const matchesSpecies = !speciesTerm || character.species.toLowerCase() === speciesTerm;
                 const matchesGender = !genderTerm || character.gender.toLowerCase() === genderTerm;
-                const matchesOrigin = !originTerm || character.origin.name.toLowerCase().includes(originTerm);
-                return matchesName && matchesStatus && matchesSpecies && matchesGender && matchesOrigin;
+                const matchesLocation = !locationTerm || character.location.name.toLowerCase().includes(locationTerm);
+                return matchesName && matchesStatus && matchesSpecies && matchesGender && matchesLocation;
             });
 
             renderCharacters(filteredCharacters);
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statusFilter.addEventListener('change', filterCharacters);
         speciesFilter.addEventListener('change', filterCharacters);
         genderFilter.addEventListener('change', filterCharacters);
-        originFilter.addEventListener('change', filterCharacters);
+        locationFilter.addEventListener('change', filterCharacters);
 
         loadCharacters();
     });
