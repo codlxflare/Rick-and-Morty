@@ -37,13 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="character-content">
                     <h3>${character.name}</h3>
                     <p>Status: ${character.status}</p>
-                    <p>Species: ${character.species}</p>
-                    <p>Gender: ${character.gender}</p>
-                    ${character.type ? `<p>Type: ${character.type}</p>` : ''}
                     <p>Origin: ${character.origin.name}</p>
                 </div>
             `;
-
+            characterCard.onclick = () => {
+                window.location.href = `character.html?id=${character.id}`;
+            };
             characterCont.appendChild(characterCard);
         });
     };
